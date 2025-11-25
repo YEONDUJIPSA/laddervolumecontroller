@@ -1,4 +1,4 @@
-// public/script.js
+// script.js
 const NUM_LINES = 10;
 const NUM_STEPS = 12;
 const LADDER_HEIGHT = 400;
@@ -10,7 +10,7 @@ let isAnimating = false;
 // --- 서버에서 사다리 구조 가져오기 ---
 async function fetchLadder() {
     try {
-        const res = await fetch('/generate-ladder');
+        const res = await fetch("https://laddervolumecontroller.onrender.com/generate-ladder');
         if (!res.ok) {
             throw new Error(`HTTP error! status: ${res.status}`);
         }
@@ -270,3 +270,4 @@ async function setupGame() {
 
 window.onload = setupGame;
 window.onresize = drawLadder;
+
