@@ -2,12 +2,10 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const cors = require('cors');
 
 const NUM_LINES = 10;
 const NUM_STEPS = 12;
 
-app.use(cors());
 app.use(express.json());
 // 'public' 폴더를 정적 파일 경로로 설정
 app.use(express.static(path.join(__dirname, 'public')));
