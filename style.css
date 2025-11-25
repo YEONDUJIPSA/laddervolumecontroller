@@ -1,0 +1,143 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+h1 { color: #333; }
+
+/* 라벨 영역 */
+#top-labels, #bottom-labels {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin-bottom: 5px;
+}
+
+.label {
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
+    cursor: pointer;
+    font-weight: bold;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.label:hover { background-color: #e3f2fd; }
+
+/* 선택된 라벨 색상 */
+.label.active.bg-red {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 2px solid #c62828;
+}
+
+.label.active.bg-blue {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    border: 2px solid #1565c0;
+}
+
+/* --- 사다리 보드 (핵심) --- */
+#ladder-board {
+    position: relative; /* 자식 요소들의 기준점 */
+    width: 100%;
+    height: 400px; 
+    border: 1px solid #ddd;
+    background-color: #fafafa;
+    margin-bottom: 20px;
+    overflow: hidden; 
+}
+
+/* 세로줄 */
+.vertical-line {
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background-color: #333;
+}
+
+/* 가로줄 (다리) */
+.bridge {
+    position: absolute;
+    height: 3px; 
+    background-color: #ddd; 
+    z-index: 1;
+    transition: background-color 0.3s;
+}
+
+/* 플레이어 포인터 */
+.player-pointer {
+    position: absolute;
+    width: 16px; 
+    height: 16px;
+    border-radius: 50%;
+    z-index: 20;
+    border: 2px solid white;
+    box-shadow: 0 0 4px rgba(0,0,0,0.5);
+    /* 🔴 중요: 공의 움직임 속도 및 부드러움 조절 */
+    transition: top 0.15s linear, left 0.2s ease; 
+}
+
+/* 포인터 색상 */
+.pointer-red {
+    background-color: #e53935;
+    z-index: 21; 
+}
+
+.pointer-blue {
+    background-color: #1e88e5;
+    z-index: 20;
+}
+
+/* 볼륨 바 UI */
+.volume-bar-container {
+    width: 80%;
+    height: 30px;
+    background-color: #e0e0e0;
+    border-radius: 15px;
+    margin: 15px auto;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+
+.volume-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50 0%, #FFEB3B 70%, #FF9800 100%);
+    transition: width 0.5s ease-out;
+    border-radius: 15px 0 0 15px;
+}
+
+/* 로딩 스피너 */
+#spinner {
+    display: none;
+    margin: 10px auto;
+    width: 30px;
+    height: 30px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
